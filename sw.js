@@ -1,4 +1,4 @@
-const CACHE = 'qingdan-v2'
+const CACHE = 'qingdan-v3'
 const ASSETS = [
   './',
   './index.html',
