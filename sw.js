@@ -1,4 +1,4 @@
-const CACHE = 'qingdan-v4'
+const CACHE = 'qingdan-v5'
 const ASSETS = [
   './',
   './index.html',
@@ -12,7 +12,11 @@ const ASSETS = [
 ]
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)))
+  event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting()))
+})
+
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim())
 })
 
 self.addEventListener('fetch', (event) => {
